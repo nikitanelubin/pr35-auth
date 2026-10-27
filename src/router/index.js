@@ -3,6 +3,7 @@ import { useAuthStore } from '../stores/auth'
 import LoginPage from '../pages/LoginPage.vue'
 import ProfilePage from '../pages/ProfilePage.vue'
 import AdminPage from '../pages/AdminPage.vue'
+import ChangePasswordPage from '../pages/ChangePasswordPage.vue'
 
 const routes = [
   // главная сразу перекидывает в профиль (а если не вошёл - guard отправит на вход)
@@ -25,6 +26,13 @@ const routes = [
     name: 'Admin',
     component: AdminPage,
     meta: { requiresAuth: true, roles: ['admin'] }
+  },
+  {
+    // Вариант 19: смена пароля - доступна всем вошедшим
+    path: '/change-password',
+    name: 'ChangePassword',
+    component: ChangePasswordPage,
+    meta: { requiresAuth: true, roles: ['user', 'admin'] }
   }
 ]
 

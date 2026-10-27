@@ -9,6 +9,9 @@
       Перейти в панель администратора
     </button>
 
+    <!-- Вариант 19: смена пароля - для любой роли -->
+    <button @click="goToChangePassword" class="btn-password">Сменить пароль</button>
+
     <button @click="logout" class="btn-danger">Выйти</button>
   </div>
 </template>
@@ -28,9 +31,14 @@ const logout = () => {
 const goToAdmin = () => {
   router.push('/admin')
 }
+
+const goToChangePassword = () => {
+  router.push('/change-password')
+}
 </script>
 
 <style scoped>
 .btn-admin { display: block; background: #3b82f6; color: white; padding: 0.7rem 1rem; border: none; border-radius: 4px; cursor: pointer; }
+.btn-password { display: block; margin-top: 1rem; padding: 0.7rem 1rem; border: 1px solid #ccc; border-radius: 4px; background: white; cursor: pointer; }
 .btn-danger { margin-top: 1rem; padding: 0.7rem 1rem; background: #ef4444; color: white; border: none; border-radius: 4px; cursor: pointer; }
 </style>
