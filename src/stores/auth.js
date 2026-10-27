@@ -54,6 +54,21 @@ export const useAuthStore = defineStore('auth', {
         return false
       }
       return true
+    },
+
+    // Вариант 19: смена пароля (имитация).
+    // Сервера нет, поэтому новый пароль никуда не сохраняется:
+    // проверяем текущий пароль, и если всё верно - страница покажет «Пароль изменён»
+    changePassword(oldPassword, newPassword) {
+      // демо-пароль текущего пользователя (тот же, что проверяется в login)
+      const currentPassword = this.role === 'admin' ? 'admin123' : 'user123'
+
+      if (oldPassword !== currentPassword) {
+        throw new Error('Текущий пароль введён неверно')
+      }
+      if (newPassword === oldPassword) {
+        throw new Error('Новый пароль должен отличаться от текущего')
+      }
     }
   }
 })
